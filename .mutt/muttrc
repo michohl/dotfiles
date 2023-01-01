@@ -1,0 +1,81 @@
+set ssl_starttls=yes
+set ssl_force_tls=yes
+set send_charset="us-ascii:utf-8"
+
+# =================== Import Passwords ================
+source "gpg -dq ~/.mutt/passwords.gpg |"
+
+set imap_user = "MichaelRT@pallid.dev"
+
+set spoolfile = "imap://localhost:1143/INBOX"
+set folder ="imap://localhost:1143/"
+#set postponed = "imap://localhost:1143/[Protonmail]/Drafts"
+#set postponed = "imap://localhost:1143/Drafts"
+#set mbox = "imap://localhost:1143/[Protonmail]/All Mail"
+set record = "+Sent"
+set trash = "+Trash"
+set postponed = "+Drafts"
+
+# For mailboxes that don't need renamed
+mailboxes "=INBOX" \
+	  "=Sent" \
+	  "=Trash" \
+	  "=Drafts" \
+	  "=Spam"
+
+# Custom folders need to be prepended with "Folders/" in Proton
+# So to remove that from the sidebar we can used named-mailboxes
+named-mailboxes "Linux Kernel" "+Folders/Linux Kernel" 
+
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+
+set smtp_authenticators = "gssapi:login"
+
+# ================  SMTP  ====================
+set smtp_url = "smtp://MichaelRT@pallid.dev@localhost:1025/"
+
+set move = no
+set imap_keepalive = 900
+
+# ================= Sidebar Settings ====================
+set sidebar_width=20
+set sidebar_visible=yes
+
+# ================= Sidebar Navigation ==================
+bind index,pager \CP sidebar-prev  # Ctrl-n Next Folder
+bind index,pager \CN sidebar-next  # Ctrl-p Previous Folder
+bind index,pager \CI sidebar-open  # Ctrl-i Open Folder
+bind index,pager \CB sidebar-toggle-visible # Ctrl-b Toggle Sidebar
+
+# ================  Composition  ====================
+set editor = '/usr/bin/vim'
+set edit_headers = yes  # See the headers when editing
+set charset = UTF-8     # value of $LANG; also fallback for 
+#set send_charset = "utf-8:iso-8859-2:iso-8859-1"
+unset use_domain        # because joe@localhost is just embarrassing
+set realname = "Michael Riesberg-Timmer"
+set from = "MichaelRT@pallid.dev"
+set use_from = yes
+set signature="~/.mutt/signature"
+
+# ================== Colors ===========================
+source /home/michohl/.mutt/mutt-colors-solarized-dark-256.muttrc
+
+
+# ================== Text/HTML ========================
+alternative_order text/plain text/enriched text/html
+auto_view text/html
+
+
+# =================== Misc ====================
+
+# Make threads appear visually
+set sort = threads 
+set sort_aux = reverse-last-date-received
+
+# Poll the imap server every 10 seconds for new emails
+set timeout=10
+
+
