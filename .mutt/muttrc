@@ -68,6 +68,10 @@ source /home/michohl/.mutt/mutt-colors-solarized-dark-256.muttrc
 alternative_order text/plain text/enriched text/html
 auto_view text/html
 
+# Make links usable by entring "CTRL+b". This requires the packages urlscan to be installed on the system
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
 
 # =================== Misc ====================
 
