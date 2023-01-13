@@ -1,0 +1,27 @@
+# Ignore all files by default
+/*
+
+# Whitelist of directories to track
+
+!/.gitignore
+
+# Allow directories under ~/.config to be tracked
+!/.config
+/.config/*
+
+# NeoMutt
+!/.mutt
+
+# Rofi
+!/.config/rofi
+
+# Kitty
+!/.config/kitty
+
+# Neofetch
+!/.config/neofetch
+
+
+# Ignore certain files in the directories we whitelisted
+/.mutt/cache
+/.mutt/certificates
