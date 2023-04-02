@@ -21,6 +21,8 @@
 # Neofetch
 !/.config/neofetch
 
+# Neovim
+!/.config/nvim
 
 # Ignore certain files in the directories we whitelisted
 /.mutt/cache

@@ -1,0 +1,18 @@
+{
+    "diagnostic.checkCurrentLine": true,
+    "python.jediEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "sh.enable": true,
+    "languageserver": {
+		"terraform": {
+			"command": "terraform-ls",
+			"args": ["serve"],
+			"filetypes": [
+				"terraform",
+				"tf"
+			],
+			"initializationOptions": {},
+			"settings": {}
+		}
+	}
+}
