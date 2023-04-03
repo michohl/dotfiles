@@ -3,6 +3,7 @@
 
 # Whitelist of directories to track
 
+!/README.md
 !/.gitignore
 
 # Allow directories under ~/.config to be tracked
@@ -23,6 +24,7 @@
 
 # Neovim
 !/.config/nvim
+.config/nvim/.undodir
 
 # Ignore certain files in the directories we whitelisted
 /.mutt/cache
