@@ -25,6 +25,7 @@
 # Neovim
 !/.config/nvim
 .config/nvim/.undodir
+.config/nvim/plugin/packer_compiled.lua
 
 # Ignore certain files in the directories we whitelisted
 /.mutt/cache
