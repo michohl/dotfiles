@@ -3,6 +3,7 @@
 desired_packages=(
     "ripgrep"
     "fd-find"
+    "npm"
 )
 
 if [ "$(uname -m)" == "Mac" ]; then
@@ -15,5 +16,6 @@ fi
 
 case "${ID,,}" in
     "debian") sudo apt install ${desired_packages[@]} ;;
+    "fedora") sudo dnf install ${desired_packages[@]} ;;
     *) echo "Sorry, '${ID} is not currently supported for setup" && exit 1 ;;
 esac
