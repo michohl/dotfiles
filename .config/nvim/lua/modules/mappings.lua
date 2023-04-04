@@ -22,3 +22,7 @@ km.set('n', '<Leader>fb', '<cmd>Telescope buffers')
 
 -- git-blame mappings
 km.set('n', '<Leader>gb', '<cmd>GitBlameToggle<cr>')
+
+-- Cycle through buffers
+km.set('n', '<A-Right>', '<cmd>bnext<CR>')
+km.set('n', '<A-Left>', '<cmd>bprevious<CR>')
