@@ -26,3 +26,10 @@ km.set('n', '<Leader>gb', '<cmd>GitBlameToggle<cr>')
 -- Cycle through buffers
 km.set('n', '<A-Right>', '<cmd>bnext<CR>')
 km.set('n', '<A-Left>', '<cmd>bprevious<CR>')
+
+
+-- Resize split panes
+km.set("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
+km.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
+km.set("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
+km.set("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
