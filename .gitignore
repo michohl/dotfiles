@@ -27,6 +27,9 @@
 .config/nvim/.undodir
 .config/nvim/plugin/packer_compiled.lua
 
+# Shell configurations
+!/.config/shells
+
 # Ignore certain files in the directories we whitelisted
 /.mutt/cache
 /.mutt/certificates
