@@ -32,6 +32,20 @@ get_injected_rc_diff(){
     get_injected_rc_content "$rc_path" | diff -y "$upstream_rc_path" -
 }
 
+# Remove everything injected by this script
+clean_injected_rc_content(){
+    rc_path="$1"
+    sed -i "/$STARTING_MARKER/,/$ENDING_MARKER/d" "$rc_path"
+}
+
+inject_content(){
+    rc_path="$1"
+    echo ""                                 >> "$rc_path"
+    echo "$STARTING_MARKER"                 >> "$rc_path"
+    cat  "$(get_upstream_rc_path $rc_path)" >> "$rc_path"
+    echo "$ENDING_MARKER"                   >> "$rc_path"
+}
+
 # Actually inject the content
 inject_rc_content(){
     rc_path="$1"
@@ -48,10 +62,7 @@ inject_rc_content(){
     fi
 
     if ! is_injected_rc "$rc_path"; then
-        echo ""                                 >> "$rc_path"
-        echo "$STARTING_MARKER"                 >> "$rc_path"
-        cat  "$(get_upstream_rc_path $rc_path)" >> "$rc_path"
-        echo "$ENDING_MARKER"                   >> "$rc_path"
+        inject_content "$rc_path"
     else
 
         get_injected_rc_diff "$rc_path"
@@ -63,18 +74,8 @@ inject_rc_content(){
         done
 
         if [ "$rc_option" = "y" ]; then
-            # Escape all newlines so we can use sed to replace the content between our markers
-            # Also escape backslashes since sed will not respect them by default
-            formatted_injected_content=$(cat "$upstream_rc_path" | sed 's/\\/\\\\/g' | sed ':a;N;$!ba;s/\n/\\n/g')
-
-            # Use short variables so our sed expression fits on the screen :(
-            x="$STARTING_MARKER"
-            y="$ENDING_MARKER"
-
-            # Replace our injected content in the target file with our new content
-            sed -i -e \
-                '/'"$x"'/,/'"$y"'/c\'"$x"'\n'"$formatted_injected_content"'\n'"$y"'' \
-                "$rc_path"
+            clean_injected_rc_content "$rc_path"
+            inject_rc_content "$rc_path"
         else
             return 0
         fi
