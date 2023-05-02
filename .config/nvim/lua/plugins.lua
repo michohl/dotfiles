@@ -117,6 +117,15 @@ return packer.startup(function(use)
   use 'leoluz/nvim-dap-go'
   use 'rcarriga/nvim-dap-ui'
 
+  -- Golang QoL
+  use {
+    'crispgm/nvim-go',
+    requires = {
+      {'rcarriga/nvim-notify'}, -- Optional
+      {'nvim-lua/plenary.nvim'},
+    }
+  }
+
   use {
     'lewis6991/gitsigns.nvim',
     -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
