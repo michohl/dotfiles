@@ -55,7 +55,24 @@ return packer.startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
+    run = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+      -- Add languages to be installed here that you want installed for treesitter
+      ensure_installed = {
+        'c',
+        'cpp',
+        'go',
+        'lua',
+        'python',
+        'rust',
+        'typescript',
+        'cmake',
+        'vim'
+      },
+      highlight = { enable = true, }
+    }
+    end
   }
 
   -- Show inline comments of git blame
@@ -65,7 +82,7 @@ return packer.startup(function(use)
   use { 'bling/vim-bufferline' }
 
   -- Preview markdown files
-  use { 'ellisonleao/glow.nvim' }
+  --use { 'ellisonleao/glow.nvim' }
 
   -- File tree
   use {
