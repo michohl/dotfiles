@@ -24,3 +24,13 @@ require('dap-go').setup {
     port = "${port}"
   },
 }
+
+-- Load the VSCode launch.json if it exists. Otherwise just run normally
+local continue = function()
+  if vim.fn.filereadable('.vscode/launch.json') then
+    require('dap.ext.vscode').load_launchjs()
+  end
+  require('dap').continue()
+end
+
+vim.keymap.set('n', '<Leader>c', function() continue() end)          -- Start a new debug session or continue until next breakpoint

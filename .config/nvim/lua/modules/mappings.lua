@@ -60,7 +60,7 @@ vim.keymap.set('n', '<Leader>ds', function()        -- Opens a hover window wher
   widgets.centered_float(widgets.scopes)
 end)
 --    Flow Control
-vim.keymap.set('n', '<Leader>c', function() require('dap').continue() end)          -- Start a new debug session or continue until next breakpoint
+                                                                                    -- Keybinding for starting debug is in plugin/nvim-dap.lua
 vim.keymap.set('n', '<Leader>r', function() require('dap').restart() end)           -- Restart current debugging session
 vim.keymap.set('n', '<Leader>s', function() require('dap').step_over() end)         -- Step line by line
 vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end) -- Turn on or off breakpoint for the line your cursor is on
