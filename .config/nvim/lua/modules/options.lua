@@ -43,3 +43,6 @@ o.scrolloff = 8
 
 -- Allow using the mouse for certain things
 o.mouse = 'a'
+
+-- Dsiable Perl as a provider
+g.loaded_perl_provider = 0
