@@ -5,3 +5,6 @@ vim.cmd [[
   runtime! lua/modules/mappings.lua
   runtime! lua/modules/util.lua
 ]]
+
+-- Find and load envFiles required for VS Code launch.json debugging
+require("loadEnvFiles")
