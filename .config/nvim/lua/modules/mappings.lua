@@ -34,6 +34,12 @@ km.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller ver
 km.set("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
 km.set("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
 
+-- Navigate panes easier
+km.set("n", "<C-k>", "<C-w><up>")
+km.set("n", "<C-j>", "<C-w><down>")
+km.set("n", "<C-l>", "<C-w><right>")
+km.set("n", "<C-h>", "<C-w><left>")
+
 -- Debugger (:help dap)
 --    UI elements
 vim.keymap.set('n', '<Leader>du', function() require('dapui').toggle() end)         -- Turn on the dap-ui panels (all dap information you need at once)
