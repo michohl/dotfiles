@@ -49,7 +49,7 @@ return packer.startup(function(use)
 
   -- Searching
   use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+  'nvim-telescope/telescope.nvim', tag = '0.1.4',
   requires = { {'nvim-lua/plenary.nvim'} }
   }
 
@@ -115,7 +115,10 @@ return packer.startup(function(use)
   -- Debugger
   use 'mfussenegger/nvim-dap'
   use 'leoluz/nvim-dap-go'
-  use 'rcarriga/nvim-dap-ui'
+  use {
+    'rcarriga/nvim-dap-ui',
+    requires = "nvim-neotest/nvim-nio"
+  }
 
   -- Golang QoL
   use {
@@ -130,6 +133,8 @@ return packer.startup(function(use)
     'lewis6991/gitsigns.nvim',
     -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
   }
+
+  -- use {'github/copilot.vim', branch = 'release' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

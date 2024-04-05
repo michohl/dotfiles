@@ -8,10 +8,10 @@ end)
 lsp.ensure_installed({
   -- Replace these with whatever servers you want to install
   'ansiblels',
-  'awk_ls',
+  -- 'awk_ls',
   'bashls',
   'clangd',
-  'neocmake',
+  -- 'neocmake',
   'dockerls',
   'eslint',
   'gopls',
@@ -21,6 +21,15 @@ lsp.ensure_installed({
   'terraformls',
   'tsserver',
   'yamlls'
+})
+
+lsp.configure("yamlls", {
+  settings = {
+    yaml = {
+      keyOrdering = false,
+      customTags = { '!reference' },
+    }
+  }
 })
 
 lsp.setup()

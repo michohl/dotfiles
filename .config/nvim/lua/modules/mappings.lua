@@ -1,5 +1,6 @@
 local km = vim.keymap
 local g = vim.g
+local a = vim.api
 
 -- Leader
 g.mapleader  = " "
@@ -45,9 +46,10 @@ km.set("n", "<C-h>", "<C-w><left>")
 
 -- Debugger (:help dap)
 --    UI elements
-km.set('n', '<Leader>du', function() require('dapui').toggle() end)         -- Turn on the dap-ui panels (all dap information you need at once)
-km.set('n', '<Leader>lb', function() require('dap').list_breakpoints() end) --
-km.set('n', '<Leader>dr', function() require('dap').repl.open() end)        -- This is the debug console
+km.set('n', '<Leader>du', function() require('dapui').toggle() end)          -- Turn on the dap-ui panels (all dap information you need at once)
+km.set('n', '<Leader>lb', function() require('dap').list_breakpoints() end)  --
+km.set('n', '<Leader>db', function() require('dap').clear_breakpoints() end) -- Remove all breakpoints
+km.set('n', '<Leader>dr', function() require('dap').repl.open() end)         -- This is the debug console
 km.set({'n', 'v'}, '<Leader>dh', function() -- This shortcut will open information about the variable under the cursor in a hover window
   require('dap.ui.widgets').hover()
 end)
@@ -72,3 +74,17 @@ km.set('n', '<Leader>so', function() require('dap').step_out() end)         -- S
 km.set('n', '<Leader>dt', function() require('dap').terminate() end)        -- Kill the debug process and end current session
 km.set('n', '<Leader>dc', function() require('dap').run_to_cursor() end)    -- Continue execution until the line the vim cursor is on
 --vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+--
+
+-- Allow for yanking to the system clipboard
+a.nvim_set_option("clipboard","unnamed")
+--km.Set('n', '<leader>y', '"+y')
+--km.Set('n', '<leader>Y', '"+yg_')
+--km.Set('n', '<leader>y', '"+y')
+--km.Set('n', '<leader>yy', '"+yy')
+
+-- Allow for pasting from the system clipboard
+--km.Set('n', '<leader>p', '"+p')
+--km.Set('n', '<leader>P', '"+P')
+--km.Set('n', '<leader>p', '"+p')
+--km.Set('n', '<leader>P', '"+P')
