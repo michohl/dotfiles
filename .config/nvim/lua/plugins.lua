@@ -68,7 +68,9 @@ return packer.startup(function(use)
         'rust',
         'typescript',
         'cmake',
-        'vim'
+        'vim',
+        'markdown',
+        'markdown_inline',
       },
       highlight = { enable = true, }
     }
@@ -135,6 +137,15 @@ return packer.startup(function(use)
   }
 
   -- use {'github/copilot.vim', branch = 'release' }
+
+  use({
+  "epwalsh/obsidian.nvim",
+  tag = "*",  -- recommended, use latest release instead of latest commit
+  requires = {
+    -- Required.
+    "nvim-lua/plenary.nvim",
+  },
+})
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
