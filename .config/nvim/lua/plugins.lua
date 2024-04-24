@@ -69,6 +69,7 @@ return packer.startup(function(use)
         'typescript',
         'cmake',
         'vim',
+        'vimdoc',
         'markdown',
         'markdown_inline',
       },
