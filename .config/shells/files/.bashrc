@@ -1,7 +1,12 @@
 # Update PATH for Go
-export GOROOT=/usr/local/go
+#export GOROOT=$HOME/go
+#export GOPATH="$GOROOT"
 export PATH="$GOROOT/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # Customize the bash prompt
-PS1="\u@\e[0;32m\h\033[0m:\W $ "
+if which starship >> /dev/null; then
+    eval "$(starship init bash)"
+else
+    PS1="\u@\e[0;32m\h\033[0m:\W $ "
+fi
