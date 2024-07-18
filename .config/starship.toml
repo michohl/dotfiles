@@ -1,0 +1,20 @@
+[character]
+success_symbol = '\$'
+
+[directory]
+style = 'blue'
+
+[git_branch]
+disabled = true
+style = 'purple'
+format = '[$symbol$branch(:$remote_branch)]($style) '
+
+[golang]
+disabled = true
+
+[kubernetes]
+format = '[☸](blue) ($cluster) \($namespace\) '
+disabled = false
+
+[cmd_duration]
+min_time = 180_000

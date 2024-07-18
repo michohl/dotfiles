@@ -30,6 +30,9 @@
 # Shell configurations
 !/.config/shells
 
+# Starship
+!/.config/starship.toml
+
 # Ignore certain files in the directories we whitelisted
 /.mutt/cache
 /.mutt/certificates
