@@ -15,6 +15,24 @@ disabled = true
 [kubernetes]
 format = '[☸](blue) ($cluster) \($namespace\) '
 disabled = false
+[[kubernetes.contexts]]
+#{ context_pattern = '(?P<cluster>[^/]+$)', context_alias = "$cluster" }
+context_pattern = 'arn.*:(?P<cluster>[\w/]+)'
+context_alias = "$cluster"
+
+[docker_context]
+disabled=true
+
+[aws]
+disabled=true
+
+[helm]
+disabled=true
+
+# Helm doesn't work well with non-standard version keys. Could enable again
+# once the following is added: https://github.com/starship/starship/issues/6102
+[package]
+disabled=true
 
 [cmd_duration]
 min_time = 180_000
