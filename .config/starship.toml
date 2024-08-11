@@ -5,9 +5,13 @@ success_symbol = '\$'
 style = 'blue'
 
 [git_branch]
-disabled = true
-style = 'purple'
+disabled = false
+style = 'white'
 format = '[$symbol$branch(:$remote_branch)]($style) '
+
+[git_status]
+stashed = ""
+style = "#FFA500" # simple orange
 
 [golang]
 disabled = true
