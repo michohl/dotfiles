@@ -38,3 +38,12 @@ disabled=true
 min_time = 30_000
 format = '\[[⏱ $duration]($style)\]'
 style = 'yellow'
+
+[custom.system_icons]
+description = "Show system icons"
+command     = '([ $(uname -s) == "Darwin" ] && echo ) || ([ $(uname -s) == "Linux" ] && echo )'
+symbol      = "on"
+format      = "[$output]($style) "
+style       = "bold"
+shell       = ["bash", "--noprofile", "--norc"]
+when        = "true"
