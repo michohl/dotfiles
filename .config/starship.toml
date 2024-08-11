@@ -35,4 +35,6 @@ disabled=true
 disabled=true
 
 [cmd_duration]
-min_time = 180_000
+min_time = 30_000
+format = '\[[⏱ $duration]($style)\]'
+style = 'yellow'
