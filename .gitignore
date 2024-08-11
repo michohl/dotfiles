@@ -21,6 +21,8 @@
 
 # Kitty
 !/.config/kitty
+# `kitten` generates backups we don't need since we use git
+/.config/kitty/kitty.conf.bak
 
 # Neofetch
 !/.config/neofetch
