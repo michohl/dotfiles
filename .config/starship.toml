@@ -17,12 +17,14 @@ style = "#FFA500" # simple orange
 disabled = true
 
 [kubernetes]
-format = '[☸](blue) ($cluster) \($namespace\) '
+format = '[󰠳](blue) [$context]($style) \($namespace\) '
 disabled = false
+
+# Shorten EKS clusters to only the important part of their name
 [[kubernetes.contexts]]
-#{ context_pattern = '(?P<cluster>[^/]+$)', context_alias = "$cluster" }
-context_pattern = 'arn.*:(?P<cluster>[\w/]+)'
+context_pattern = 'arn.*\/(?P<cluster>[\w\/]+)'
 context_alias = "$cluster"
+style = 'green'
 
 [docker_context]
 disabled=true
