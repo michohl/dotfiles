@@ -93,28 +93,6 @@ return packer.startup(function(use)
     requires = "nvim-tree/nvim-web-devicons"
   }
 
-  -- LSP
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    requires = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
-      {                                      -- Optional
-        'williamboman/mason.nvim',
-        run = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
-      },
-      {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},     -- Required
-      {'hrsh7th/cmp-nvim-lsp'}, -- Required
-      {'L3MON4D3/LuaSnip'},     -- Required
-    }
-  }
-
   -- Debugger
   use 'mfussenegger/nvim-dap'
   use 'leoluz/nvim-dap-go'
@@ -146,6 +124,20 @@ return packer.startup(function(use)
     -- Required.
     "nvim-lua/plenary.nvim",
   },
+
+  use {
+  "pmizio/typescript-tools.nvim",
+  requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  config = function()
+    require("typescript-tools").setup {}
+  end,
+  },
+
+  -- Preview Swagger (OpenAPI) files
+  use {
+    "vinnymeller/swagger-preview.nvim",
+    run = "npm i",
+  }
 })
 
   -- Automatically set up your configuration after cloning packer.nvim

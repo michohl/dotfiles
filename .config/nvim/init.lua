@@ -12,3 +12,18 @@ require("loadEnvFiles")
 
 -- Add hot reloading for Kitty config changes
 require("kittyHotReloading")
+
+-- Enable LSP
+vim.lsp.enable({
+  'eslint',
+  'luals',
+  'gopls',
+  'pyright',
+  'tsserver'
+})
+
+-- Turn on diagnostic lines
+vim.diagnostic.config({
+  -- virtual_lines = true,
+   virtual_text = true,
+})

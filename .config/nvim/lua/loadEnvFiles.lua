@@ -11,6 +11,16 @@ local readEnvFile = function(filePath)
   for line in f:lines() do
     if not env.isCommentedLine(line) and not env.isEmptyLine(line) then
       local key, value = env.parseKV(line)
+
+      -- Remove any double quotes or single quotes around the value
+      -- value, _ = string.gsub(value, '"(%s+)"', "%1")
+      -- value, _ = string.gsub(value, "'(%s+)'", "%1")
+      if value:sub(1,1) == '"' and value:sub(-1,-1) == '"' then
+        value = value:sub(2, -2)
+      elseif value:sub(1,1) == "'" and value:sub(-1,-1) == "'" then
+        value = value:sub(2, -2)
+      end
+
       -- Set the environment variable in Vim only. This won't persist when we exit Vim
       vim.fn.setenv(key, value)
     end

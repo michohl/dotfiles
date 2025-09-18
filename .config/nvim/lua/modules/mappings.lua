@@ -50,6 +50,7 @@ km.set('n', '<Leader>du', function() require('dapui').toggle() end)          -- 
 km.set('n', '<Leader>lb', function() require('dap').list_breakpoints() end)  --
 km.set('n', '<Leader>db', function() require('dap').clear_breakpoints() end) -- Remove all breakpoints
 km.set('n', '<Leader>dr', function() require('dap').repl.open() end)         -- This is the debug console
+km.set('n', '<Leader>dw', function() require('dapui').elements.watches.add(vim.fn.expand('<cword>')) end)         -- This is the debug console
 km.set({'n', 'v'}, '<Leader>dh', function() -- This shortcut will open information about the variable under the cursor in a hover window
   require('dap.ui.widgets').hover()
 end)
@@ -88,3 +89,8 @@ a.nvim_set_option("clipboard","unnamed")
 --km.Set('n', '<leader>P', '"+P')
 --km.Set('n', '<leader>p', '"+p')
 --km.Set('n', '<leader>P', '"+P')
+
+-- LSP
+km.set('n', '<Leader>gd', function() vim.lsp.buf.definition() end) -- Go to definition of symbol under cursor
+km.set('n', '<Leader>gr', function() vim.lsp.buf.references() end) -- List all references of symbol under cursor
+km.set('n', '<Leader>rn', function() vim.lsp.buf.rename() end)     -- Rename all instances of symbol under cursor
