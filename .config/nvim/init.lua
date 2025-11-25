@@ -6,9 +6,10 @@ vim.cmd [[
   runtime! lua/modules/util.lua
 ]]
 
+vim.notify = require("notify")
+
 -- Find and load envFiles required for VS Code launch.json debugging
 require("loadEnvFiles")
-
 
 -- Add hot reloading for Kitty config changes
 require("kittyHotReloading")

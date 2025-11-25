@@ -31,8 +31,13 @@ end
 local loadEnvFiles = function()
 
   -- Parse our launch.json into a struct we can use
-  local data = env.readLaunchJSON()
-  if data == nil then
+  local success, data_or_err = pcall(env.readLaunchJSON)
+  if success then
+    if data_or_err == nil then
+      return
+    end
+  else
+    vim.notify("Unable to read .vscode/launch.json: " .. data_or_err, vim.log.levels.WARN)
     return
   end
 
@@ -40,7 +45,7 @@ local loadEnvFiles = function()
   local foundEnvFile = false
 
   -- Get all the envFiles in our launch.json and load them into local ENV
-  for _, config in next, data.configurations do
+  for _, config in next, data_or_err.configurations do
     if config.envFile ~= nil then
       foundEnvFile = true
       readEnvFile(env.formatFileName(config.envFile))
@@ -49,7 +54,7 @@ local loadEnvFiles = function()
 
   -- If we found an envFile to try and load while parsing the config then let the user know we loaded it
   if foundEnvFile then
-    require("notify")("Found and loaded envFile(s)")
+    vim.notify("Found and loaded envFile(s)")
   end
 
 end
