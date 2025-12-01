@@ -12,13 +12,19 @@ local readEnvFile = function(filePath)
     if not env.isCommentedLine(line) and not env.isEmptyLine(line) then
       local key, value = env.parseKV(line)
 
-      -- Remove any double quotes or single quotes around the value
-      -- value, _ = string.gsub(value, '"(%s+)"', "%1")
-      -- value, _ = string.gsub(value, "'(%s+)'", "%1")
-      if value:sub(1,1) == '"' and value:sub(-1,-1) == '"' then
-        value = value:sub(2, -2)
-      elseif value:sub(1,1) == "'" and value:sub(-1,-1) == "'" then
-        value = value:sub(2, -2)
+      -- Sometimes we have a key but not a value like so
+      -- MY_ENV_VALUE=
+      if value == nil or value == "" then
+        value = ""
+      else
+        -- Remove any double quotes or single quotes around the value
+        -- value, _ = string.gsub(value, '"(%s+)"', "%1")
+        -- value, _ = string.gsub(value, "'(%s+)'", "%1")
+        if value:sub(1,1) == '"' and value:sub(-1,-1) == '"' then
+          value = value:sub(2, -2)
+        elseif value:sub(1,1) == "'" and value:sub(-1,-1) == "'" then
+          value = value:sub(2, -2)
+        end
       end
 
       -- Set the environment variable in Vim only. This won't persist when we exit Vim
