@@ -55,11 +55,11 @@ return packer.startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     run = ':TSUpdate',
     config = function()
-      require('nvim-treesitter.configs').setup {
-      -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = {
+      require('nvim-treesitter').install({
+        -- Add languages to be installed here that you want installed for treesitter
         'c',
         'cpp',
         'go',
@@ -72,9 +72,13 @@ return packer.startup(function(use)
         'vimdoc',
         'markdown',
         'markdown_inline',
-      },
-      highlight = { enable = true, }
-    }
+      })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
     end
   }
 
